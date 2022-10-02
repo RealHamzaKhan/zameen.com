@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zameen_pk/constants/constants.dart';
 import 'package:sliding_switch/sliding_switch.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:zameen_pk/screens/new_projects.dart';
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -631,18 +632,23 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
             SizedBox(width: MediaQuery.of(context).size.width*0.025,),
-            Container(
-              height: MediaQuery.of(context).size.height*0.070,
-              width: MediaQuery.of(context).size.width*0.5,
-              decoration:BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.green,
-              ),
-              child: Center(
-                child: Text('Show 1000+ Ads',softWrap: true,style: kAppDrawerTextStyling.copyWith(
-                  color: Colors.white,
-                  fontSize: 23,
-                ),),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>NewProjects()));
+              },
+              child: Container(
+                height: MediaQuery.of(context).size.height*0.070,
+                width: MediaQuery.of(context).size.width*0.5,
+                decoration:BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.green,
+                ),
+                child: Center(
+                  child: Text('Show 1000+ Ads',softWrap: true,style: kAppDrawerTextStyling.copyWith(
+                    color: Colors.white,
+                    fontSize: 23,
+                  ),),
+                ),
               ),
             ),
           ],
@@ -670,7 +676,7 @@ class MyCustomListViewContainers extends StatelessWidget {
         color: Colors.grey.withOpacity(0.3),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

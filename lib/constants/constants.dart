@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:zameen_pk/screens/home_screen.dart';
 import 'package:zameen_pk/screens/logged_in_screen.dart';
 
+import '../screens/favourites_screen.dart';
 import '../screens/new_projects.dart';
 import '../screens/search_screen.dart';
 
 const kAppDrawerTextStyling=TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w700,
+  fontFamily: 'Georgia',
 
 );
 TextStyle kDividerTextStylling=TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w400,
+  fontFamily: 'Georgia',
   color: Colors.grey.withOpacity(0.8),
 );
 BoxDecoration kContainerListDecoration=BoxDecoration(
@@ -57,7 +60,11 @@ class CustomNavigationBar extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
               },
               child: Icon(Icons.search)),label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite_outline),label: 'Favourites'),
+          BottomNavigationBarItem(icon: GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouritesScreen()));
+              },
+              child: Icon(Icons.favorite_outline)),label: 'Favourites'),
           BottomNavigationBarItem(icon: GestureDetector(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>LoggedInScreen()));

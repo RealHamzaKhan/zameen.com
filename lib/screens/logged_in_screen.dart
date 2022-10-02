@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zameen_pk/constants/constants.dart';
 import 'package:zameen_pk/screens/drawer.dart';
+import 'package:zameen_pk/screens/favourites_screen.dart';
+import 'package:zameen_pk/screens/my_properties.dart';
+import 'package:zameen_pk/screens/qouta_credits.dart';
+import 'package:zameen_pk/screens/settings_screen.dart';
 class LoggedInScreen extends StatelessWidget {
   const LoggedInScreen({Key? key}) : super(key: key);
 
@@ -78,23 +82,47 @@ class LoggedInScreen extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        ProfileCustomContainer(Icons.settings, 'Profile\nSettings'),
+                        GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingsScreen()));
+                            },
+                            child: ProfileCustomContainer(Icons.settings, 'Profile\nSettings')),
                         SizedBox(height: 10,),
-                        ProfileCustomContainer(Icons.home_work_outlined, 'My\nProperties'),
+                        GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProperties()));
+                            },
+                            child: ProfileCustomContainer(Icons.home_work_outlined, 'My\nProperties')),
                       ],
                     ),
                     Column(
                       children: [
-                        ProfileCustomContainer(Icons.search_rounded, 'My Saved\nSearches'),
+                        GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouritesScreen()));
+                            },
+                            child: ProfileCustomContainer(Icons.search_rounded, 'My Saved\nSearches')),
                         SizedBox(height: 10,),
-                        ProfileCustomContainer(Icons.drafts, 'Drafts'),
+                        GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProperties()));
+                            },
+                            child: ProfileCustomContainer(Icons.drafts, 'Drafts')),
                       ],
                     ),
                     Column(
                       children: [
-                        ProfileCustomContainer(Icons.favorite, 'My\nFavourites'),
+                        GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouritesScreen()));
+                            },
+                            child: ProfileCustomContainer(Icons.favorite, 'My\nFavourites')),
                         SizedBox(height: 10,),
-                        ProfileCustomContainer(Icons.pie_chart, 'Qouta and\nCredits'),
+                        GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>QoutaCredits()));
+                            },
+                            child: ProfileCustomContainer(Icons.pie_chart, 'Qouta and\nCredits')),
                       ],
                     ),
                   ],
@@ -121,7 +149,7 @@ class LoggedInScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 10,),
-                            Text('Looking to sell or rent out your\n property?',style: kAppDrawerTextStyling,),
+                            Text('Looking to sell or rent\nout your property?',style: kAppDrawerTextStyling,),
                           ],
                         ),
                         SizedBox(height:10),

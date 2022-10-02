@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:zameen_pk/screens/about_us.dart';
 import 'package:zameen_pk/screens/add_property.dart';
+import 'package:zameen_pk/screens/contact_us.dart';
 import 'package:zameen_pk/screens/favourites_screen.dart';
 import 'package:zameen_pk/screens/home_screen.dart';
 import 'package:zameen_pk/screens/logged_in_screen.dart';
+import 'package:zameen_pk/screens/login_page.dart';
+import 'package:zameen_pk/screens/my_properties.dart';
 import 'package:zameen_pk/screens/new_projects.dart';
+import 'package:zameen_pk/screens/plot_finder.dart';
+import 'package:zameen_pk/screens/qouta_credits.dart';
 import 'package:zameen_pk/screens/search_screen.dart';
+import 'package:zameen_pk/screens/settings_screen.dart';
+import 'package:zameen_pk/screens/signup_screen.dart';
+import 'package:zameen_pk/screens/terms_privacy_policy.dart';
+import 'package:zameen_pk/screens/zameen_blog.dart';
+import 'package:zameen_pk/screens/zameen_news.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +41,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const AddProperty(),
+      home: const LoginPage(),
     );
   }
 }

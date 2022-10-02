@@ -616,7 +616,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                 ),
                               ),
                               SizedBox(width: 10,),
-                              Text('Looking to sell or rent out your\n property?',style: kAppDrawerTextStyling,),
+                              Text('Looking to sell or rent\nout your property?',style: kAppDrawerTextStyling.copyWith(
+                                fontSize: 18,
+                              ),),
                             ],
                           ),
                           SizedBox(height:10),

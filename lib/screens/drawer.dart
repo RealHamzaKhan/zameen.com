@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:zameen_pk/constants/constants.dart';
+import 'package:zameen_pk/screens/about_us.dart';
+import 'package:zameen_pk/screens/contact_us.dart';
+import 'package:zameen_pk/screens/favourites_screen.dart';
 import 'package:zameen_pk/screens/home_screen.dart';
+import 'package:zameen_pk/screens/login_page.dart';
+import 'package:zameen_pk/screens/my_properties.dart';
+import 'package:zameen_pk/screens/plot_finder.dart';
+import 'package:zameen_pk/screens/qouta_credits.dart';
 import 'package:zameen_pk/screens/search_screen.dart';
+import 'package:zameen_pk/screens/settings_screen.dart';
+import 'package:zameen_pk/screens/terms_privacy_policy.dart';
+import 'package:zameen_pk/screens/zameen_blog.dart';
+import 'package:zameen_pk/screens/zameen_news.dart';
 
 import 'logged_in_screen.dart';
 import 'new_projects.dart';
@@ -63,11 +74,31 @@ class _MyDrawerState extends State<MyDrawer> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>NewProjects()));
                   },
                   child: MyListTile(Icons.home_work_outlined, 'New Projects')),
-              MyListTile(Icons.favorite, 'Favourites'),
-              MyListTile(Icons.save, 'Saved Searches'),
-              MyListTile(Icons.place, 'Plot Finder'),
-              MyListTile(Icons.newspaper, 'Zameen News'),
-              MyListTile(Icons.messenger, 'Zameen Blog'),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouritesScreen()));
+                  },
+                  child: MyListTile(Icons.favorite, 'Favourites')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouritesScreen()));
+                  },
+                  child: MyListTile(Icons.save, 'Saved Searches')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PlotFinder()));
+                  },
+                  child: MyListTile(Icons.place, 'Plot Finder')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ZameenNews()));
+                  },
+                  child: MyListTile(Icons.newspaper, 'Zameen News')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ZameenBlog()));
+                  },
+                  child: MyListTile(Icons.messenger, 'Zameen Blog')),
               SizedBox(height: 5,),
               Row(
                   children: <Widget>[
@@ -89,9 +120,21 @@ class _MyDrawerState extends State<MyDrawer> {
                   ]
               ),
               SizedBox(height: 5,),
-              MyListTile(Icons.add_home_work_sharp, 'My Properties'),
-              MyListTile(Icons.drafts_outlined, 'Drafts'),
-              MyListTile(Icons.watch_later_outlined, 'Qouta and Credits'),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProperties()));
+                  },
+                  child: MyListTile(Icons.add_home_work_sharp, 'My Properties')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProperties()));
+                  },
+                  child: MyListTile(Icons.drafts_outlined, 'Drafts')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>QoutaCredits()));
+                  },
+                  child: MyListTile(Icons.watch_later_outlined, 'Qouta and Credits')),
               SizedBox(height: 5,),
               Row(
                   children: <Widget>[
@@ -113,11 +156,31 @@ class _MyDrawerState extends State<MyDrawer> {
                   ]
               ),
               MyListTile(Icons.language_outlined, 'English'),
-              MyListTile(Icons.settings, 'Settings'),
-              MyListTile(Icons.info_outline, 'About Us'),
-              MyListTile(Icons.phone, 'Contact Us'),
-              MyListTile(Icons.policy, 'Terms and privacy Policy'),
-              MyListTile(Icons.logout_outlined, 'Log Out'),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingsScreen()));
+                  },
+                  child: MyListTile(Icons.settings, 'Settings')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>AboutUs()));
+                  },
+                  child: MyListTile(Icons.info_outline, 'About Us')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ContactUs()));
+                  },
+                  child: MyListTile(Icons.phone, 'Contact Us')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>TermAndPrivacyPolicy()));
+                  },
+                  child: MyListTile(Icons.policy, 'Terms and privacy Policy')),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                  },
+                  child: MyListTile(Icons.logout_outlined, 'Log Out')),
               SizedBox(height: 10,),
               Text('App Version 3.16.13'),
             ],
