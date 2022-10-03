@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zameen_pk/constants/constants.dart';
 import 'package:zameen_pk/screens/about_us.dart';
+import 'package:zameen_pk/screens/add_property.dart';
 import 'package:zameen_pk/screens/contact_us.dart';
 import 'package:zameen_pk/screens/favourites_screen.dart';
 import 'package:zameen_pk/screens/home_screen.dart';
@@ -63,7 +64,11 @@ class _MyDrawerState extends State<MyDrawer> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
                   },
                   child: MyListTile(Icons.home_filled, 'Home')),
-              MyListTile(Icons.add, 'Add Property'),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>AddProperty()));
+                  },
+                  child: MyListTile(Icons.add, 'Add Property')),
               GestureDetector(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));

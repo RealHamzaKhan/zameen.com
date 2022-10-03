@@ -58,9 +58,10 @@ class _SignupPageState extends State<SignupPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.network('https://1000logos.net/wp-content/uploads/2016/11/fb-logo.jpg'),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.08,),
+                        Image.asset('images/facebook.png',height: MediaQuery.of(context).size.height*0.04,),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.08,),
                         Text('Continue with Facebook',style: kAppDrawerTextStyling,),
                       ],
                     )
@@ -80,11 +81,10 @@ class _SignupPageState extends State<SignupPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.network('https://i.pinimg.com/736x/92/b6/c8/92b6c82469eba49abe6f2ad2b4865a87--logo-branding-logo-inspiration.jpg',
-                          //width: MediaQuery.of(context).size.width*0.1,height:MediaQuery.of(context).size.width*1 ,
-                        ),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.08,),
+                        Image.asset('images/google.png',height: MediaQuery.of(context).size.height*0.04,),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.08,),
                         Text('Continue with Google',style: kAppDrawerTextStyling,),
                       ],
                     )
@@ -104,9 +104,10 @@ class _SignupPageState extends State<SignupPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                       Icon(Icons.email,size: 40,),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.08,),
+                        Image.asset('images/email.png',height: MediaQuery.of(context).size.height*0.04,),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.08,),
                         Text('Continue with Email',style: kAppDrawerTextStyling,),
                       ],
                     )

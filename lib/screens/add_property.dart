@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:zameen_pk/screens/search_screen.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import '../constants/constants.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
 class AddProperty extends StatefulWidget {
   const AddProperty({Key? key}) : super(key: key);
@@ -11,6 +14,32 @@ class AddProperty extends StatefulWidget {
 }
 
 class _AddPropertyState extends State<AddProperty> {
+  File? image;
+  final _picker=ImagePicker();
+  Future getImageFromGallery()async{
+    final pickedimage=await _picker.pickImage(source: ImageSource.gallery,imageQuality: 80);
+    if(pickedimage!=null){
+      image=File(pickedimage.path);
+      setState((){
+
+      });
+    }
+    else{
+      print('image not selected');
+    }
+  }
+  Future getImageFromCamera()async{
+    final pickedimage=await _picker.pickImage(source: ImageSource.camera,imageQuality: 80);
+    if(pickedimage!=null){
+      image=File(pickedimage.path);
+      setState((){
+
+      });
+    }
+    else{
+      print('image not selected');
+    }
+  }
   bool isChecked=false;
   bool isCheckedPossession=false;
   String areaDropDownValue='sq.ft';
@@ -563,42 +592,54 @@ class _AddPropertyState extends State<AddProperty> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Container(
+                              GestureDetector(
+                                onTap: (){
+                                  //image from gallery
+                                  getImageFromGallery();
+                                },
+                                child: Container(
                           height: MediaQuery.of(context).size.height*0.070,
-                                width: MediaQuery.of(context).size.width*0.45,
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.image,color: Colors.white,),
-                                    SizedBox(width: MediaQuery.of(context).size.width*0.025,),
-                                    Text('From Gallery',style: kAppDrawerTextStyling.copyWith(
-                                      color: Colors.white,
-                                    ),),
-                                  ],
+                                  width: MediaQuery.of(context).size.width*0.45,
+                                  decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.image,color: Colors.white,),
+                                      SizedBox(width: MediaQuery.of(context).size.width*0.025,),
+                                      Text('From Gallery',style: kAppDrawerTextStyling.copyWith(
+                                        color: Colors.white,
+                                      ),),
+                                    ],
+                                  ),
                                 ),
                               ),
                               SizedBox(height: MediaQuery.of(context).size.height*0.015,),
-                              Container(
-                                height: MediaQuery.of(context).size.height*0.070,
-                                width: MediaQuery.of(context).size.width*0.45,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: Colors.black.withOpacity(0.2),width: 2),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.camera_alt,color: Colors.green,),
-                                    SizedBox(width: MediaQuery.of(context).size.width*0.025,),
-                                    Text('From Camera',style: kAppDrawerTextStyling.copyWith(
-                                      color: Colors.green,
-                                    ),),
-                                  ],
+                              GestureDetector(
+                                onTap: (){
+                                  //image from camera
+                                  getImageFromCamera();
+                                },
+                                child: Container(
+                                  height: MediaQuery.of(context).size.height*0.070,
+                                  width: MediaQuery.of(context).size.width*0.45,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.black.withOpacity(0.2),width: 2),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.camera_alt,color: Colors.green,),
+                                      SizedBox(width: MediaQuery.of(context).size.width*0.025,),
+                                      Text('From Camera',style: kAppDrawerTextStyling.copyWith(
+                                        color: Colors.green,
+                                      ),),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

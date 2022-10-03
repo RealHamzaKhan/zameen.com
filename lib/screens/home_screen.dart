@@ -6,7 +6,6 @@ import 'package:sliding_switch/sliding_switch.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:zameen_pk/screens/search_screen.dart';
-
 import 'logged_in_screen.dart';
 import 'new_projects.dart';
 class HomeScreen extends StatefulWidget {
@@ -76,6 +75,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
     );
     super.initState();
   }
+  List<String> _cities=['Lahore','Karachi','Peshawar','Quetta','Mardan'
+  ,'Islamabad','Faisalabad'
+  ];
+  String cityName='Lahore';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,7 +151,53 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                             ),
                             Spacer(),
                             VerticalDivider(thickness: 1,),
-                            Text('Lahore',style: kAppDrawerTextStyling.copyWith(fontSize: 12),),
+                            GestureDetector(
+                                onTap: (){
+                                  showModalBottomSheet<void>(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30)),
+                                    ),
+                                    elevation: 2,
+                                      context: context,
+                                      builder: (BuildContext context){
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 15),
+                                          child: ListView.builder(
+                                              itemCount:_cities.length,
+                                              itemBuilder: (context,index){
+                                                if(index==0){
+                                                  return Center(
+                                                    child: Text('Select City',style: kAppDrawerTextStyling.copyWith(
+                                                      fontSize: 25,
+                                                      color: Colors.green,
+                                                    ),),
+                                                  );
+                                                }
+                                                else
+                                                  {
+                                                    return Column(
+                                                      children: [
+                                                        SizedBox(height: 10,),
+                                                        Divider(thickness: 1,color: Colors.black.withOpacity(0.2),),
+                                                        GestureDetector(
+                                                            onTap: (){
+
+                                                              setState(() {
+                                                                cityName=_cities[index];
+                                                                Navigator.pop(context);
+                                                              });
+                                                            },
+                                                            child: Text(_cities[index],style: kAppDrawerTextStyling,)),
+                                                      ],
+                                                    );
+                                                  }
+                                                  }
+                                            ),
+                                        );
+                                      }
+                                  );
+                                },
+                                child: Text(cityName,style: kAppDrawerTextStyling.copyWith(fontSize: 12),)),
                             SizedBox(width: 4,),
                             CircleAvatar(radius: 8,backgroundColor: Colors.green,child: Icon(Icons.arrow_forward_ios,size: 10,)),
                           ],
@@ -734,35 +783,44 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                 itemCount: 4,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context,index){
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 10,),
-                                      Row(
+                                  return Container(
+                                    constraints: BoxConstraints(
+                                      maxHeight: double.infinity,
+                                      maxWidth: double.infinity,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Container(
-                                            height: MediaQuery.of(context).size.height*0.13,
-                                            width: MediaQuery.of(context).size.width*0.3,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(image: NetworkImage('https://media.istockphoto.com/photos/five-thousand-pakistani-rupees-banknotes-close-up-view-with-selective-picture-id1411337800',
-                                              ),fit: BoxFit.fill),
-                                              borderRadius: BorderRadius.circular(5),
-                                            ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: MediaQuery.of(context).size.height*0.13,
+                                                width: MediaQuery.of(context).size.width*0.3,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(image: NetworkImage('https://media.istockphoto.com/photos/five-thousand-pakistani-rupees-banknotes-close-up-view-with-selective-picture-id1411337800',
+                                                  ),fit: BoxFit.fill),
+                                                  borderRadius: BorderRadius.circular(5),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10,),
+                                            ],
                                           ),
-                                          SizedBox(width: 10,),
+                                          SizedBox(height: 10,),
+                                          Text('SBP reserves highest\nin two months at\n USDT 8.85 bn',style: kAppDrawerTextStyling.copyWith(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),),
+                                          SizedBox(height: 10,),
+                                          Text('Sep 04,2022',style: kDividerTextStylling.copyWith(
+                                            fontSize: 10,
+                                          ),),
                                         ],
                                       ),
-                                      SizedBox(height: 10,),
-                                      Text('SBP reserves highest\nin two months at USDT\n 8.85 bn',style: kAppDrawerTextStyling.copyWith(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),),
-                                      SizedBox(height: 10,),
-                                      Text('Sep 04,2022',style: kDividerTextStylling.copyWith(
-                                        fontSize: 10,
-                                      ),),
-                                    ],
+                                    ),
                                   );
                                 }),
                           ),
@@ -787,35 +845,44 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                                 itemCount: 4,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context,index){
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 10,),
-                                      Row(
+                                  return Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: double.infinity,
+                                      maxHeight: double.infinity,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Container(
-                                            height: MediaQuery.of(context).size.height*0.13,
-                                            width: MediaQuery.of(context).size.width*0.3,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(image: NetworkImage('https://cdn.pixabay.com/photo/2020/03/31/11/06/journalist-4987228_960_720.jpg',
-                                              ),fit: BoxFit.fill),
-                                              borderRadius: BorderRadius.circular(5),
-                                            ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: MediaQuery.of(context).size.height*0.13,
+                                                width: MediaQuery.of(context).size.width*0.3,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(image: NetworkImage('https://cdn.pixabay.com/photo/2020/03/31/11/06/journalist-4987228_960_720.jpg',
+                                                  ),fit: BoxFit.fill),
+                                                  borderRadius: BorderRadius.circular(5),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10,),
+                                            ],
                                           ),
-                                          SizedBox(width: 10,),
+                                          SizedBox(height: 10,),
+                                          Text('Is the media and\ngovernment going in\nthe same line',style: kAppDrawerTextStyling.copyWith(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),),
+                                          SizedBox(height: 10,),
+                                          Text('3.78k views',style: kDividerTextStylling.copyWith(
+                                            fontSize: 10,
+                                          ),),
                                         ],
                                       ),
-                                      SizedBox(height: 10,),
-                                      Text('Is the media and\ngovernment going in\nthe same line',style: kAppDrawerTextStyling.copyWith(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),),
-                                      SizedBox(height: 10,),
-                                      Text('3.78k views',style: kDividerTextStylling.copyWith(
-                                        fontSize: 10,
-                                      ),),
-                                    ],
+                                    ),
                                   );
                                 }),
                           ),

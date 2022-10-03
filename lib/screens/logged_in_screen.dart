@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:zameen_pk/constants/constants.dart';
+import 'package:zameen_pk/screens/contact_us.dart';
 import 'package:zameen_pk/screens/drawer.dart';
 import 'package:zameen_pk/screens/favourites_screen.dart';
+import 'package:zameen_pk/screens/login_page.dart';
 import 'package:zameen_pk/screens/my_properties.dart';
 import 'package:zameen_pk/screens/qouta_credits.dart';
 import 'package:zameen_pk/screens/settings_screen.dart';
+import 'package:zameen_pk/screens/terms_privacy_policy.dart';
 class LoggedInScreen extends StatelessWidget {
   const LoggedInScreen({Key? key}) : super(key: key);
 
@@ -195,7 +198,11 @@ class LoggedInScreen extends StatelessWidget {
                 SizedBox(height: 7,),
                 Divider(color: Colors.grey.withOpacity(0.3),thickness: 0.7,),
                 SizedBox(height: 7,),
-                ProfileCustomRow(Icons.phone, 'Contact Us'),
+                GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ContactUs()));
+                    },
+                    child: ProfileCustomRow(Icons.phone, 'Contact Us')),
                 SizedBox(height: 7,),
                 Divider(color: Colors.grey.withOpacity(0.3),thickness: 0.7,),
                 SizedBox(height: 7,),
@@ -207,21 +214,30 @@ class LoggedInScreen extends StatelessWidget {
                 SizedBox(height: 7,),
                 Divider(color: Colors.grey.withOpacity(0.3),thickness: 0.7,),
                 SizedBox(height: 7,),
-                ProfileCustomRow(Icons.policy, 'Terms and Privacy Policy'),
+                GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>TermAndPrivacyPolicy()));
+                    },
+                    child: ProfileCustomRow(Icons.policy, 'Terms and Privacy Policy')),
                 SizedBox(height: 7,),
                 Divider(color: Colors.grey.withOpacity(0.3),thickness: 0.7,),
                 SizedBox(height: 7,),
-                Row(
-                  children: [
-                    Icon(Icons.logout_outlined,color: Colors.red,),
-                    SizedBox(width: MediaQuery.of(context).size.width*0.060,),
-                    Text('Log Out',style: kAppDrawerTextStyling.copyWith(
-                      fontSize: 16,
-                      color: Colors.red,
-                      fontWeight: FontWeight.w400,
-                    ),),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.logout_outlined,color: Colors.red,),
+                      SizedBox(width: MediaQuery.of(context).size.width*0.060,),
+                      Text('Log Out',style: kAppDrawerTextStyling.copyWith(
+                        fontSize: 16,
+                        color: Colors.red,
+                        fontWeight: FontWeight.w400,
+                      ),),
 
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(height: 15,),
                 Row(

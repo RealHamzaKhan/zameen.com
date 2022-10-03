@@ -46,6 +46,7 @@ dependencies:
   http: ^0.13.5
   custom_info_window: ^1.0.1
   banner_carousel: ^1.2.1
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:
